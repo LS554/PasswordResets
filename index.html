@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=200px" />
+    <title>Password Resets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap");
+
+      * {
+        font-family: inter tight;
+      }
+
+      .title {
+        font-family: 'InterTight', sans-serif;
+        font-weight: 300;
+        margin: 20px;
+        padding: 0;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #000;
+        font-size: 50px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body class="w-screen min-h-full bg-gray-900">
+    <div class="container my-8 flex flex-col items-center justify-center">
+        <h1 class="title">
+            Password Resets
+        </h1>
+      <input
+        type="text"
+        class="search w-3/4 h-12 bg-gray-700 p-4 outline-none rounded-md mb-6"
+        placeholder="Search for service name..."
+        onchange="search()"
+        onkeydown="search()"
+        onkeyup="search()"
+        onkeypress="search()"
+      />
+      <div
+        class="options relative w-3/4 h-auto rounded-md overflow-hidden"
+      ></div>
+    </div>
+
+    <script>
+      // data for search
+      const options = [
+        {
+          name: "Apple ",
+          url: "https://iforgot.apple.com/password/verify/appleid",
+        },
+        {
+          name: "Google",
+          url: "https://myaccount.google.com/intro/signinoptions/password",
+        },
+        {
+          name: "RBC",
+          url: "https://www.rbcroyalbank.com/onlinebanking/remember_my_card/about.html#a2",
+        },
+        {
+          name: "Amazon",
+          url: "https://www.amazon.com/gp/css/account/forgot-password/email.html",
+        },
+        {
+          name: "RBC",
+          url: "https://www.rbcroyalbank.com/onlinebanking/remember_my_card/about.html#a2",
+        },
+        {
+          name: "RBC",
+          url: "https://www.rbcroyalbank.com/onlinebanking/remember_my_card/about.html#a2",
+        },
+        {
+          name: "RBC",
+          url: "https://www.rbcroyalbank.com/onlinebanking/remember_my_card/about.html#a2",
+        },
+        {
+          name: "RBC",
+          url: "https://www.rbcroyalbank.com/onlinebanking/remember_my_card/about.html#a2",
+        },
+
+      ];
+
+      const optionsEL = document.querySelector(".options");
+      options.forEach((i) => {
+        let option = document.createElement("a");
+        option.classList.add(
+          "option",
+          "h-12",
+          "bg-gray-700",
+          "text-white",
+          "block",
+          "border-b",
+          "border-gray-600",
+          "flex",
+          "items-center",
+          "px-4"
+        );
+        option.innerHTML = i.name;
+        option.setAttribute("href", i.url);
+        optionsEL.appendChild(option);
+      });
+    </script>
+    <script>
+      // search function
+
+      const optionsEls = document.querySelectorAll(".option");
+      const searchEl = document.querySelector(".search");
+
+      const search = () =>
+        optionsEls.forEach(
+          (e) =>
+            (e.style.display =
+              e.innerHTML.toUpperCase().indexOf(searchEl.value.toUpperCase()) >
+              -1
+                ? ""
+                : "none")
+        );
+    </script>
+  </body>
+</html>
